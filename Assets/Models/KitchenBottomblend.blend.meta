@@ -6,10 +6,65 @@ ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Box
+    100004: Desk
+    100006: FaceC
+    100008: FaceC1
+    100010: FaceC2
+    100012: FaceC3
+    100014: FaceL
+    100016: FaceR1
+    100018: FaceR2
+    100020: FaceR3
+    100022: FaceLC
     400000: //RootNode
+    400002: Box
+    400004: Desk
+    400006: FaceC
+    400008: FaceC1
+    400010: FaceC2
+    400012: FaceC3
+    400014: FaceL
+    400016: FaceR1
+    400018: FaceR2
+    400020: FaceR3
+    400022: FaceLC
     2300000: //RootNode
+    2300002: Box
+    2300004: Desk
+    2300006: FaceC
+    2300008: FaceC1
+    2300010: FaceC2
+    2300012: FaceC3
+    2300014: FaceL
+    2300016: FaceR1
+    2300018: FaceR2
+    2300020: FaceR3
+    2300022: FaceLC
     3300000: //RootNode
+    3300002: Box
+    3300004: Desk
+    3300006: FaceC
+    3300008: FaceC1
+    3300010: FaceC2
+    3300012: FaceC3
+    3300014: FaceL
+    3300016: FaceR1
+    3300018: FaceR2
+    3300020: FaceR3
+    3300022: FaceLC
     4300000: Cube
+    4300002: FaceC
+    4300004: FaceL
+    4300006: FaceR1
+    4300008: FaceR2
+    4300010: FaceR3
+    4300012: FaceC3
+    4300014: FaceC2
+    4300016: Desk
+    4300018: FaceC1
+    4300020: Box
+    4300022: FaceLC
     7400000: Default Take
     9500000: //RootNode
   materials:
