@@ -17,6 +17,11 @@ ModelImporter:
     100018: FaceR2
     100020: FaceR3
     100022: FaceLC
+    100024: Cylinder
+    100026: Table
+    100028: FrontsX
+    100030: FrontsY
+    100032: TableLeg
     400000: //RootNode
     400002: Box
     400004: Desk
@@ -29,6 +34,11 @@ ModelImporter:
     400018: FaceR2
     400020: FaceR3
     400022: FaceLC
+    400024: Cylinder
+    400026: Table
+    400028: FrontsX
+    400030: FrontsY
+    400032: TableLeg
     2300000: //RootNode
     2300002: Box
     2300004: Desk
@@ -41,6 +51,11 @@ ModelImporter:
     2300018: FaceR2
     2300020: FaceR3
     2300022: FaceLC
+    2300024: Cylinder
+    2300026: Table
+    2300028: FrontsX
+    2300030: FrontsY
+    2300032: TableLeg
     3300000: //RootNode
     3300002: Box
     3300004: Desk
@@ -53,6 +68,11 @@ ModelImporter:
     3300018: FaceR2
     3300020: FaceR3
     3300022: FaceLC
+    3300024: Cylinder
+    3300026: Table
+    3300028: FrontsX
+    3300030: FrontsY
+    3300032: TableLeg
     4300000: Cube
     4300002: FaceC
     4300004: FaceL
@@ -65,6 +85,11 @@ ModelImporter:
     4300018: FaceC1
     4300020: Box
     4300022: FaceLC
+    4300024: Cylinder
+    4300026: Table
+    4300028: FrontsY
+    4300030: TableLeg
+    4300032: FrontsX
     7400000: Default Take
     9500000: //RootNode
   materials:
