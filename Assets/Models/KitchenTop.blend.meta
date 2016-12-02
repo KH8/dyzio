@@ -1,0 +1,200 @@
+fileFormatVersion: 2
+guid: ebb1ffae5a880420faacb6aef607da7e
+timeCreated: 1480711811
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Box
+    100002: FrontYCL2
+    100004: FrontYCL3
+    100006: FrontYCR2
+    100008: FrontYL2
+    100010: FrontYL2_001
+    100012: FrontYL3
+    100014: FrontYL3_001
+    100016: Handle1_000
+    100018: Handle1_001
+    100020: Handle1_002
+    100022: Handle1_003
+    100024: Handle1_004
+    100026: Handle1_005
+    100028: Handle1_006
+    100030: //RootNode
+    100032: Hood
+    100034: Cube
+    100036: FrontYR2
+    100038: FrontYR3
+    100040: GlassR
+    100042: GlassR_001
+    100044: GlassR_002
+    100046: GlassYC
+    100048: GlassYL
+    100050: GlassYR
+    400000: Box
+    400002: FrontYCL2
+    400004: FrontYCL3
+    400006: FrontYCR2
+    400008: FrontYL2
+    400010: FrontYL2_001
+    400012: FrontYL3
+    400014: FrontYL3_001
+    400016: Handle1_000
+    400018: Handle1_001
+    400020: Handle1_002
+    400022: Handle1_003
+    400024: Handle1_004
+    400026: Handle1_005
+    400028: Handle1_006
+    400030: //RootNode
+    400032: Hood
+    400034: Cube
+    400036: FrontYR2
+    400038: FrontYR3
+    400040: GlassR
+    400042: GlassR_001
+    400044: GlassR_002
+    400046: GlassYC
+    400048: GlassYL
+    400050: GlassYR
+    2300000: Box
+    2300002: FrontYCL2
+    2300004: FrontYCL3
+    2300006: FrontYCR2
+    2300008: FrontYL2
+    2300010: FrontYL2_001
+    2300012: FrontYL3
+    2300014: FrontYL3_001
+    2300016: Handle1_000
+    2300018: Handle1_001
+    2300020: Handle1_002
+    2300022: Handle1_003
+    2300024: Handle1_004
+    2300026: Handle1_005
+    2300028: Handle1_006
+    2300030: Hood
+    2300032: Cube
+    2300034: FrontYR2
+    2300036: FrontYR3
+    2300038: GlassR
+    2300040: GlassR_001
+    2300042: GlassR_002
+    2300044: GlassYC
+    2300046: GlassYL
+    2300048: GlassYR
+    3300000: Box
+    3300002: FrontYCL2
+    3300004: FrontYCL3
+    3300006: FrontYCR2
+    3300008: FrontYL2
+    3300010: FrontYL2_001
+    3300012: FrontYL3
+    3300014: FrontYL3_001
+    3300016: Handle1_000
+    3300018: Handle1_001
+    3300020: Handle1_002
+    3300022: Handle1_003
+    3300024: Handle1_004
+    3300026: Handle1_005
+    3300028: Handle1_006
+    3300030: Hood
+    3300032: Cube
+    3300034: FrontYR2
+    3300036: FrontYR3
+    3300038: GlassR
+    3300040: GlassR_001
+    3300042: GlassR_002
+    3300044: GlassYC
+    3300046: GlassYL
+    3300048: GlassYR
+    4300000: FrontYL3_001
+    4300002: FrontYL2_001
+    4300004: Handle1_006
+    4300006: Handle1_005
+    4300008: Box
+    4300010: FrontYCL2
+    4300012: Handle1_000
+    4300014: Handle1_004
+    4300016: Handle1_003
+    4300018: Handle1_002
+    4300020: Handle1_001
+    4300022: FrontYCR2
+    4300024: FrontYL2
+    4300026: FrontYL3
+    4300028: FrontYCL3
+    4300030: Hood
+    4300032: Cube
+    4300034: FrontYR3
+    4300036: FrontYR2
+    4300038: GlassR_002
+    4300040: GlassR_001
+    4300042: GlassR
+    4300044: GlassYC
+    4300046: GlassYR
+    4300048: GlassYL
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
