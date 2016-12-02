@@ -45,6 +45,7 @@ ModelImporter:
     100074: Handle1_008
     100076: Handle1_009
     100078: Handle1_010
+    100080: Cube
     400000: //RootNode
     400002: Box
     400004: Desk
@@ -85,6 +86,7 @@ ModelImporter:
     400074: Handle1_008
     400076: Handle1_009
     400078: Handle1_010
+    400080: Cube
     2300000: //RootNode
     2300002: Box
     2300004: Desk
@@ -125,6 +127,7 @@ ModelImporter:
     2300074: Handle1_008
     2300076: Handle1_009
     2300078: Handle1_010
+    2300080: Cube
     3300000: //RootNode
     3300002: Box
     3300004: Desk
@@ -165,6 +168,7 @@ ModelImporter:
     3300074: Handle1_008
     3300076: Handle1_009
     3300078: Handle1_010
+    3300080: Cube
     4300000: Cube
     4300002: FaceC
     4300004: FaceL
