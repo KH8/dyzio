@@ -22,6 +22,29 @@ ModelImporter:
     100028: FrontsX
     100030: FrontsY
     100032: TableLeg
+    100034: FrontXL1
+    100036: FrontXL2
+    100038: FrontXL3
+    100040: FrontXP
+    100042: FrontYCL
+    100044: FrontYCR1
+    100046: FrontYCR2
+    100048: FrontYCR3
+    100050: FrontYL
+    100052: FrontYL1
+    100054: FrontYL2
+    100056: FrontYL3
+    100058: Handle1
+    100060: Handle1_001
+    100062: Handle1_002
+    100064: Handle1_003
+    100066: Handle1_004
+    100068: Handle1_005
+    100070: Handle1_006
+    100072: Handle1_007
+    100074: Handle1_008
+    100076: Handle1_009
+    100078: Handle1_010
     400000: //RootNode
     400002: Box
     400004: Desk
@@ -39,6 +62,29 @@ ModelImporter:
     400028: FrontsX
     400030: FrontsY
     400032: TableLeg
+    400034: FrontXL1
+    400036: FrontXL2
+    400038: FrontXL3
+    400040: FrontXP
+    400042: FrontYCL
+    400044: FrontYCR1
+    400046: FrontYCR2
+    400048: FrontYCR3
+    400050: FrontYL
+    400052: FrontYL1
+    400054: FrontYL2
+    400056: FrontYL3
+    400058: Handle1
+    400060: Handle1_001
+    400062: Handle1_002
+    400064: Handle1_003
+    400066: Handle1_004
+    400068: Handle1_005
+    400070: Handle1_006
+    400072: Handle1_007
+    400074: Handle1_008
+    400076: Handle1_009
+    400078: Handle1_010
     2300000: //RootNode
     2300002: Box
     2300004: Desk
@@ -56,6 +102,29 @@ ModelImporter:
     2300028: FrontsX
     2300030: FrontsY
     2300032: TableLeg
+    2300034: FrontXL1
+    2300036: FrontXL2
+    2300038: FrontXL3
+    2300040: FrontXP
+    2300042: FrontYCL
+    2300044: FrontYCR1
+    2300046: FrontYCR2
+    2300048: FrontYCR3
+    2300050: FrontYL
+    2300052: FrontYL1
+    2300054: FrontYL2
+    2300056: FrontYL3
+    2300058: Handle1
+    2300060: Handle1_001
+    2300062: Handle1_002
+    2300064: Handle1_003
+    2300066: Handle1_004
+    2300068: Handle1_005
+    2300070: Handle1_006
+    2300072: Handle1_007
+    2300074: Handle1_008
+    2300076: Handle1_009
+    2300078: Handle1_010
     3300000: //RootNode
     3300002: Box
     3300004: Desk
@@ -73,6 +142,29 @@ ModelImporter:
     3300028: FrontsX
     3300030: FrontsY
     3300032: TableLeg
+    3300034: FrontXL1
+    3300036: FrontXL2
+    3300038: FrontXL3
+    3300040: FrontXP
+    3300042: FrontYCL
+    3300044: FrontYCR1
+    3300046: FrontYCR2
+    3300048: FrontYCR3
+    3300050: FrontYL
+    3300052: FrontYL1
+    3300054: FrontYL2
+    3300056: FrontYL3
+    3300058: Handle1
+    3300060: Handle1_001
+    3300062: Handle1_002
+    3300064: Handle1_003
+    3300066: Handle1_004
+    3300068: Handle1_005
+    3300070: Handle1_006
+    3300072: Handle1_007
+    3300074: Handle1_008
+    3300076: Handle1_009
+    3300078: Handle1_010
     4300000: Cube
     4300002: FaceC
     4300004: FaceL
@@ -90,6 +182,29 @@ ModelImporter:
     4300028: FrontsY
     4300030: TableLeg
     4300032: FrontsX
+    4300034: FrontXP
+    4300036: FrontXL3
+    4300038: FrontXL2
+    4300040: FrontXL1
+    4300042: FrontYL
+    4300044: FrontYCR1
+    4300046: FrontYCR2
+    4300048: FrontYL1
+    4300050: FrontYL2
+    4300052: FrontYL3
+    4300054: FrontYCR3
+    4300056: FrontYCL
+    4300058: Handle1_010
+    4300060: Handle1_009
+    4300062: Handle1_008
+    4300064: Handle1_007
+    4300066: Handle1_006
+    4300068: Handle1_005
+    4300070: Handle1_004
+    4300072: Handle1_003
+    4300074: Handle1_002
+    4300076: Handle1_001
+    4300078: Handle1
     7400000: Default Take
     9500000: //RootNode
   materials:
