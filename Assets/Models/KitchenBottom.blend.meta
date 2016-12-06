@@ -46,6 +46,18 @@ ModelImporter:
     100076: Handle1_009
     100078: Handle1_010
     100080: Cube
+    100082: Handle10
+    100084: Handle11
+    100086: Handle2
+    100088: Handle3
+    100090: Handle4
+    100092: Handle5
+    100094: Handle6
+    100096: Handle7
+    100098: Handle8
+    100100: Handle9
+    100102: HandlesX
+    100104: HandlesY
     400000: //RootNode
     400002: Box
     400004: Desk
@@ -87,6 +99,18 @@ ModelImporter:
     400076: Handle1_009
     400078: Handle1_010
     400080: Cube
+    400082: Handle10
+    400084: Handle11
+    400086: Handle2
+    400088: Handle3
+    400090: Handle4
+    400092: Handle5
+    400094: Handle6
+    400096: Handle7
+    400098: Handle8
+    400100: Handle9
+    400102: HandlesX
+    400104: HandlesY
     2300000: //RootNode
     2300002: Box
     2300004: Desk
@@ -128,6 +152,16 @@ ModelImporter:
     2300076: Handle1_009
     2300078: Handle1_010
     2300080: Cube
+    2300082: Handle10
+    2300084: Handle11
+    2300086: Handle2
+    2300088: Handle3
+    2300090: Handle4
+    2300092: Handle5
+    2300094: Handle6
+    2300096: Handle7
+    2300098: Handle8
+    2300100: Handle9
     3300000: //RootNode
     3300002: Box
     3300004: Desk
@@ -169,6 +203,16 @@ ModelImporter:
     3300076: Handle1_009
     3300078: Handle1_010
     3300080: Cube
+    3300082: Handle10
+    3300084: Handle11
+    3300086: Handle2
+    3300088: Handle3
+    3300090: Handle4
+    3300092: Handle5
+    3300094: Handle6
+    3300096: Handle7
+    3300098: Handle8
+    3300100: Handle9
     4300000: Cube
     4300002: FaceC
     4300004: FaceL
@@ -209,6 +253,16 @@ ModelImporter:
     4300074: Handle1_002
     4300076: Handle1_001
     4300078: Handle1
+    4300080: Handle9
+    4300082: Handle8
+    4300084: Handle7
+    4300086: Handle11
+    4300088: Handle10
+    4300090: Handle6
+    4300092: Handle5
+    4300094: Handle4
+    4300096: Handle3
+    4300098: Handle2
     7400000: Default Take
     9500000: //RootNode
   materials:

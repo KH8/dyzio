@@ -31,6 +31,20 @@ ModelImporter:
     100046: GlassYC
     100048: GlassYL
     100050: GlassYR
+    100052: Fronts
+    100054: FrontYCL1
+    100056: FrontYCR1
+    100058: FrontYL1
+    100060: FrontYR1
+    100062: Glasses
+    100064: Handle1
+    100066: Handle2
+    100068: Handle3
+    100070: Handle4
+    100072: Handle5
+    100074: Handle6
+    100076: Handle7
+    100078: Handles
     400000: Box
     400002: FrontYCL2
     400004: FrontYCL3
@@ -57,6 +71,20 @@ ModelImporter:
     400046: GlassYC
     400048: GlassYL
     400050: GlassYR
+    400052: Fronts
+    400054: FrontYCL1
+    400056: FrontYCR1
+    400058: FrontYL1
+    400060: FrontYR1
+    400062: Glasses
+    400064: Handle1
+    400066: Handle2
+    400068: Handle3
+    400070: Handle4
+    400072: Handle5
+    400074: Handle6
+    400076: Handle7
+    400078: Handles
     2300000: Box
     2300002: FrontYCL2
     2300004: FrontYCL3
@@ -82,6 +110,17 @@ ModelImporter:
     2300044: GlassYC
     2300046: GlassYL
     2300048: GlassYR
+    2300050: FrontYCL1
+    2300052: FrontYCR1
+    2300054: FrontYL1
+    2300056: FrontYR1
+    2300058: Handle1
+    2300060: Handle2
+    2300062: Handle3
+    2300064: Handle4
+    2300066: Handle5
+    2300068: Handle6
+    2300070: Handle7
     3300000: Box
     3300002: FrontYCL2
     3300004: FrontYCL3
@@ -107,6 +146,17 @@ ModelImporter:
     3300044: GlassYC
     3300046: GlassYL
     3300048: GlassYR
+    3300050: FrontYCL1
+    3300052: FrontYCR1
+    3300054: FrontYL1
+    3300056: FrontYR1
+    3300058: Handle1
+    3300060: Handle2
+    3300062: Handle3
+    3300064: Handle4
+    3300066: Handle5
+    3300068: Handle6
+    3300070: Handle7
     4300000: FrontYL3_001
     4300002: FrontYL2_001
     4300004: Handle1_006
@@ -132,6 +182,17 @@ ModelImporter:
     4300044: GlassYC
     4300046: GlassYR
     4300048: GlassYL
+    4300050: Handle7
+    4300052: Handle6
+    4300054: Handle1
+    4300056: Handle5
+    4300058: Handle4
+    4300060: Handle3
+    4300062: Handle2
+    4300064: FrontYR1
+    4300066: FrontYCL1
+    4300068: FrontYCR1
+    4300070: FrontYL1
     7400000: Default Take
     9500000: //RootNode
   materials:

@@ -21,6 +21,11 @@ ModelImporter:
     100026: Base2
     100028: SideBox2
     100030: SittingBase2
+    100032: BackBox1
+    100034: Base1
+    100036: SideBox1
+    100038: SittingBase1
+    100040: SittingBases
     400000: Obj_000002
     400002: Object01
     400004: Object02
@@ -37,6 +42,11 @@ ModelImporter:
     400026: Base2
     400028: SideBox2
     400030: SittingBase2
+    400032: BackBox1
+    400034: Base1
+    400036: SideBox1
+    400038: SittingBase1
+    400040: SittingBases
     2300000: Obj_000002
     2300002: Object01
     2300004: Object02
@@ -52,6 +62,10 @@ ModelImporter:
     2300024: Base2
     2300026: SideBox2
     2300028: SittingBase2
+    2300030: BackBox1
+    2300032: Base1
+    2300034: SideBox1
+    2300036: SittingBase1
     3300000: Obj_000002
     3300002: Object01
     3300004: Object02
@@ -67,6 +81,10 @@ ModelImporter:
     3300024: Base2
     3300026: SideBox2
     3300028: SittingBase2
+    3300030: BackBox1
+    3300032: Base1
+    3300034: SideBox1
+    3300036: SittingBase1
     4300000: Object02
     4300002: Object01
     4300004: Obj_000002
@@ -82,6 +100,10 @@ ModelImporter:
     4300024: BackBox2
     4300026: Base2
     4300028: SittingBase2
+    4300030: SittingBase1
+    4300032: Base1
+    4300034: BackBox1
+    4300036: SideBox1
     7400000: Default Take
     9500000: //RootNode
   materials:

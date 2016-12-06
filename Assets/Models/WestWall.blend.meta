@@ -17,6 +17,10 @@ ModelImporter:
     100018: RWindowSpane
     100020: Wall
     100022: //RootNode
+    100024: Frames
+    100026: LWindowSPane
+    100028: Panes
+    100030: RWindowSPane
     400000: LFrame
     400002: LWindowB
     400004: LWindowBPane
@@ -29,6 +33,10 @@ ModelImporter:
     400018: RWindowSpane
     400020: Wall
     400022: //RootNode
+    400024: Frames
+    400026: LWindowSPane
+    400028: Panes
+    400030: RWindowSPane
     2300000: LFrame
     2300002: LWindowB
     2300004: LWindowBPane
@@ -40,6 +48,8 @@ ModelImporter:
     2300016: RWindowS
     2300018: RWindowSpane
     2300020: Wall
+    2300022: LWindowSPane
+    2300024: RWindowSPane
     3300000: LFrame
     3300002: LWindowB
     3300004: LWindowBPane
@@ -51,6 +61,8 @@ ModelImporter:
     3300016: RWindowS
     3300018: RWindowSpane
     3300020: Wall
+    3300022: LWindowSPane
+    3300024: RWindowSPane
     4300000: RFrame
     4300002: RWindowS
     4300004: RWindowB
@@ -62,6 +74,8 @@ ModelImporter:
     4300016: LWindowB
     4300018: LWindowS
     4300020: LFrame
+    4300022: RWindowSPane
+    4300024: LWindowSPane
     7400000: Default Take
     9500000: //RootNode
   materials:

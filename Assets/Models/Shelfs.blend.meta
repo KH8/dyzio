@@ -20,6 +20,20 @@ ModelImporter:
     100024: VertMid1_004
     100026: Shelf2
     100028: Shelf3
+    100030: LongShelf1
+    100032: LongShelf2
+    100034: LongShelf3
+    100036: LongShelfs
+    100038: ShortShelf1
+    100040: ShortShelf2
+    100042: ShortShelf3
+    100044: ShortShelf4
+    100046: ShortShelf5
+    100048: ShortShelfs
+    100050: VertWall1
+    100052: VertWall2
+    100054: VertWalls
+    100056: Walls
     400000: //RootNode
     400002: WallL
     400004: WallR
@@ -35,6 +49,20 @@ ModelImporter:
     400024: VertMid1_004
     400026: Shelf2
     400028: Shelf3
+    400030: LongShelf1
+    400032: LongShelf2
+    400034: LongShelf3
+    400036: LongShelfs
+    400038: ShortShelf1
+    400040: ShortShelf2
+    400042: ShortShelf3
+    400044: ShortShelf4
+    400046: ShortShelf5
+    400048: ShortShelfs
+    400050: VertWall1
+    400052: VertWall2
+    400054: VertWalls
+    400056: Walls
     2300000: WallL
     2300002: WallR
     2300004: Shelf1
@@ -49,6 +77,16 @@ ModelImporter:
     2300022: VertMid1_004
     2300024: Shelf2
     2300026: Shelf3
+    2300028: LongShelf1
+    2300030: LongShelf2
+    2300032: LongShelf3
+    2300034: ShortShelf1
+    2300036: ShortShelf2
+    2300038: ShortShelf3
+    2300040: ShortShelf4
+    2300042: ShortShelf5
+    2300044: VertWall1
+    2300046: VertWall2
     3300000: WallL
     3300002: WallR
     3300004: Shelf1
@@ -63,6 +101,16 @@ ModelImporter:
     3300022: VertMid1_004
     3300024: Shelf2
     3300026: Shelf3
+    3300028: LongShelf1
+    3300030: LongShelf2
+    3300032: LongShelf3
+    3300034: ShortShelf1
+    3300036: ShortShelf2
+    3300038: ShortShelf3
+    3300040: ShortShelf4
+    3300042: ShortShelf5
+    3300044: VertWall1
+    3300046: VertWall2
     4300000: WallR
     4300002: WallL
     4300004: Shelf1_002
@@ -77,6 +125,16 @@ ModelImporter:
     4300022: Vert1
     4300024: Shelf2
     4300026: Shelf3
+    4300028: VertWall2
+    4300030: VertWall1
+    4300032: ShortShelf1
+    4300034: ShortShelf2
+    4300036: ShortShelf3
+    4300038: ShortShelf4
+    4300040: ShortShelf5
+    4300042: LongShelf1
+    4300044: LongShelf2
+    4300046: LongShelf3
     7400000: Default Take
     9500000: //RootNode
   materials:

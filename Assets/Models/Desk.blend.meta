@@ -15,6 +15,10 @@ ModelImporter:
     100014: Handle1_001
     100016: Handle1_002
     100018: Leg
+    100020: Fronts
+    100022: Handle2
+    100024: Handle3
+    100026: Handles
     400000: Box
     400002: Desk
     400004: //RootNode
@@ -25,6 +29,10 @@ ModelImporter:
     400014: Handle1_001
     400016: Handle1_002
     400018: Leg
+    400020: Fronts
+    400022: Handle2
+    400024: Handle3
+    400026: Handles
     2300000: Box
     2300002: Desk
     2300004: FrontYCR1
@@ -34,6 +42,8 @@ ModelImporter:
     2300012: Handle1_001
     2300014: Handle1_002
     2300016: Leg
+    2300018: Handle2
+    2300020: Handle3
     3300000: Box
     3300002: Desk
     3300004: FrontYCR1
@@ -43,6 +53,8 @@ ModelImporter:
     3300012: Handle1_001
     3300014: Handle1_002
     3300016: Leg
+    3300018: Handle2
+    3300020: Handle3
     4300000: Leg
     4300002: Box
     4300004: Handle1_002
@@ -52,6 +64,8 @@ ModelImporter:
     4300012: FrontYCR2
     4300014: FrontYCR3
     4300016: Desk
+    4300018: Handle3
+    4300020: Handle2
     7400000: Default Take
     9500000: //RootNode
   materials:
