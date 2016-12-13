@@ -139,7 +139,19 @@ function UpdateSmoothedMovementDirection ()
 	var right = Vector3(forward.z, 0, -forward.x);
 
 	var v = Input.GetAxisRaw("Vertical");
-	var h = Input.GetAxisRaw("Horizontal");
+
+	var hRaw = Input.GetAxisRaw("Horizontal");
+	var hMouse = Input.GetAxis("Mouse X");
+
+	var hPositive = Mathf.Max(hRaw, hMouse);
+	var hNegative = Mathf.Min(hRaw, hMouse);
+
+	var h = 0;
+	if (hPositive >= Mathf.Abs(hNegative)) {
+		h = hPositive;
+	} else {
+		h = hNegative;
+	} 
 
 	// Are we moving backwards or looking backwards
 	if (v < -0.2)

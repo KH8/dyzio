@@ -1,6 +1,5 @@
 var cameraTransform: Transform;
-private
-var _target: Transform;
+private var _target: Transform;
 
 // The distance in the x-z plane to the target
 
@@ -21,21 +20,17 @@ var clampHeadPositionScreenSpace = 0.75;
 
 var lockCameraTimeout = 0.2;
 
-private
-var headOffset = Vector3.zero;
-private
-var centerOffset = Vector3.zero;
+private var headOffset = Vector3.zero;
+private var centerOffset = Vector3.zero;
 
-private
-var heightVelocity = 0.0;
-private
-var angleVelocity = 0.0;
-private
-var snap = false;
-private
-var controller: ThirdPersonController;
-private
-var targetHeight = 100000.0;
+private var heightVelocity = 0.0;
+private var angleVelocity = 0.0;
+private var snap = false;
+private var controller: ThirdPersonController;
+private var targetHeight = 100000.0;
+
+var speedV = 2.0;
+private var pitch = 0.0;
 
 function Awake() {
   if (!cameraTransform && Camera.main)
@@ -148,6 +143,9 @@ function Apply(dummyTarget: Transform, dummyCenter: Vector3) {
 
   // Always look at the target	
   SetUpRotation(targetCenter, targetHead);
+
+  pitch -= speedV * Input.GetAxis("Mouse Y");
+  cameraTransform.eulerAngles.x = pitch;
 }
 
 function LateUpdate() {
