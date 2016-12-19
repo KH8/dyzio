@@ -4,8 +4,7 @@ using System.Collections;
 public class BallCollider : MonoBehaviour {
 	public float pushPower = 2.0f;
 
-	void OnControllerColliderHit(ControllerColliderHit hit)
-	{
+	void OnControllerColliderHit(ControllerColliderHit hit) {
 		var body = hit.collider.attachedRigidbody;
 		if (body == null || body.isKinematic) {
 			return;
