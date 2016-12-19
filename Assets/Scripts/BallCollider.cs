@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class BallCollider : MonoBehaviour {
 	public float pushPower = 2.0f;

@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour {
         if (controller.isGrounded) {
             HandleJump();
             HandleRunModes();
-            HandleHorizontalMovement();
+            HandleVerticalMovement();
             HandleHorizontalRotation();
         }
     }
@@ -59,12 +59,19 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    private void HandleHorizontalMovement() {
+    private void HandleVerticalMovement() {
         _movementDirection.z = Input.GetAxisRaw("Vertical");
     }
 
     private void HandleHorizontalRotation() {
-        _rotationDirection.y = Input.GetAxisRaw("Horizontal");
+        var axisRawHorizontal = Input.GetAxisRaw("Horizontal");
+        var axisMouseX = Input.GetAxis("Mouse X");;
+
+        if (Mathf.Abs(axisRawHorizontal) > Mathf.Abs(axisMouseX)) {
+            _rotationDirection.y = axisRawHorizontal;
+        } else {
+            _rotationDirection.y = axisMouseX;
+        }
     }
 
     private void ApplyGravity() {
