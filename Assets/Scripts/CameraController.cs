@@ -13,6 +13,10 @@ public class CameraController : MonoBehaviour {
 
     private Vector3 _refVelocity = Vector3.zero;
 
+	private bool _isOnTrigger = false;
+
+	private float _lockedDistance;
+
 	/// <summary>
 	/// Start is called on the frame when a script is enabled just before
 	/// any of the Update methods is called the first time.
@@ -38,7 +42,12 @@ public class CameraController : MonoBehaviour {
 	}
 
 	private void CalculatePosition(Quaternion rotation) {
-		_desiredPosition = target.transform.position - (rotation * _offset);
+		var distance = Vector3.Distance(transform.position, target.transform.position);
+		if (!_isOnTrigger) {
+			_desiredPosition = target.transform.position - (rotation * _offset);
+		} else if (distance > _lockedDistance) {
+			_isOnTrigger = false;
+		}
 	}
 
 	private void CalculateOverheadAngle() {
@@ -51,5 +60,17 @@ public class CameraController : MonoBehaviour {
 		transform.position = Vector3.SmoothDamp(transform.position, _desiredPosition, ref _refVelocity, smoothTime);
 		transform.LookAt(target.transform);
 		transform.Rotate(-1 * _overheadAngle, 0, 0);
+	}
+
+	/// <summary>
+	/// OnTriggerEnter is called when the Collider other enters the trigger.
+	/// </summary>
+	/// <param name="other">The other Collider involved in this collision.</param>
+	void OnTriggerEnter(Collider other) {
+		if (!_isOnTrigger) {
+			_isOnTrigger = true;
+			_desiredPosition = transform.position;
+			_lockedDistance = Vector3.Distance(transform.position, target.transform.position);
+		}
 	}
 }
