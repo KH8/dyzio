@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class BallCollider : MonoBehaviour {
+public class PushCollider : MonoBehaviour {
 	public float pushPower = 2.0f;
 
 	void OnControllerColliderHit(ControllerColliderHit hit) {
