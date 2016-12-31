@@ -15,6 +15,7 @@ public class CameraController : MonoBehaviour {
 
 	private bool _isOnTrigger = false;
 
+	private float _distance;
 	private float _lockedDistance;
 
 	/// <summary>
@@ -42,10 +43,10 @@ public class CameraController : MonoBehaviour {
 	}
 
 	private void CalculatePosition(Quaternion rotation) {
-		var distance = Vector3.Distance(transform.position, target.transform.position);
+		_distance = Vector3.Distance(transform.position, target.transform.position);
 		if (!_isOnTrigger) {
 			_desiredPosition = target.transform.position - (rotation * _offset);
-		} else if (distance > _lockedDistance) {
+		} else if (_distance > _lockedDistance) {
 			_isOnTrigger = false;
 		}
 	}
@@ -70,7 +71,7 @@ public class CameraController : MonoBehaviour {
 		if (!_isOnTrigger) {
 			_isOnTrigger = true;
 			_desiredPosition = transform.position;
-			_lockedDistance = Vector3.Distance(transform.position, target.transform.position);
+			_lockedDistance = _distance;
 		}
 	}
 }
