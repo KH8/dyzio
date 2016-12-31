@@ -13,9 +13,12 @@ public class PlayerAnimator : MonoBehaviour {
     public float trotMaxAnimationSpeed = 1.0f;
     public float runMaxAnimationSpeed = 1.0f;
     public float jumpAnimationSpeed = 1.15f;
+    public float brokenRunFixTime = 0.5f;
 
     private Animation _animation;
-    private CharacterState _state;
+    private CharacterState _state = CharacterState.Idle;
+    private CharacterState _previousState = CharacterState.Idle;
+    private float _brokenRunTimeStamp = -1000.0f;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -49,6 +52,21 @@ public class PlayerAnimator : MonoBehaviour {
                 _state = CharacterState.Running;
             }
         }
+        HandleBrokenRunState();
+        _previousState = _state;
+    }
+
+    private void HandleBrokenRunState() {
+        if (CharacterState.Running.Equals(_previousState) && CharacterState.Idle.Equals(_state)) {
+            _brokenRunTimeStamp = Time.realtimeSinceStartup;
+        }
+        KeepWalkingStateForFixTime(brokenRunFixTime);
+    }
+
+    private void KeepWalkingStateForFixTime(float time) {
+        if (Time.realtimeSinceStartup - _brokenRunTimeStamp < time) {
+            _state = CharacterState.Walking;
+        }
     }
 
     private void ResolveAnimation() {
@@ -70,7 +88,7 @@ public class PlayerAnimator : MonoBehaviour {
                 _animation[jumpPoseAnimation.name].wrapMode = WrapMode.ClampForever;
                 _animation.CrossFade(jumpPoseAnimation.name);
                 break;
-            case CharacterState.Idle: 
+            case CharacterState.Idle:
                 _animation.CrossFade(idleAnimation.name);
                 break;
         }        
