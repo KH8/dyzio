@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour {
     public float gravity = 10.0f;
 
     public float movementSpeed = 2.0f;
-    public float rotaionSpeed = 10.0f;
+    public float rotaionSpeed = 2.0f;
     public float jumpSpeed = 2.0f;
 
     private Vector3 _movementDirection = new Vector3();
