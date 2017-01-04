@@ -55,7 +55,13 @@ public class MovableController : MonoBehaviour {
             var energy = rb.mass * _speed * _speed;
             energy *= 0.5f;
             Debug.Log("Hit with energy: " + energy);
+            AddPoints(energy);
         }
+    }
+
+    private void AddPoints(float energy) {
+            var pc = GameObject.Find("Game").GetComponent<PointCounter>();
+            pc.Add(energy);
     }
 
     private enum State {
