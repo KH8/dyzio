@@ -1,15 +1,16 @@
 using UnityEngine;
 
 public class MovableController : MonoBehaviour {
-    public float minDistanceLift = 0.2f;
-    public float minDistanceChange = 0.05f;
+    public Rigidbody rb;
+    public float minFreeFallSpeed = 0.05f;
+    public float minLiftingSpeed = 0.005f;
 
     private float _distance = float.NaN;
     private float _previousDistance = float.NaN;
-    private float _minDistance = float.NaN;
-    private float _maxDistance = float.NaN;
-    private bool _isGrounded;
-    private bool _wasGrounded;
+    private float _speed = float.NaN;
+
+    private State _state;
+    private State _previousState;
 
     /// <summary>
     /// This function is called every fixed framerate frame, if the MonoBehaviour is enabled.
@@ -19,21 +20,17 @@ public class MovableController : MonoBehaviour {
     }
 
     private void HandleFreeFall() {
-        ResolveDistances();
+        CalculateSpeed();
         ResolveFreeFallState();
+        CalculateKinematicEnergy();
+        _previousState = _state;
     }
 
-    private void ResolveDistances() {
+    private void CalculateSpeed() {
         _distance = transform.position.y;
         _previousDistance = InitDistanceIfNan(_previousDistance);
-
-        _minDistance = InitDistanceIfNan(_minDistance);
-        _maxDistance = InitDistanceIfNan(_maxDistance);
-
-        _minDistance = Mathf.Min(_minDistance, _distance);
-        _maxDistance = Mathf.Max(_maxDistance, _distance);
-
-        Debug.Log("dist: " + _distance + ", pre: " + _previousDistance + ", min: " + _minDistance + ", max: " + _maxDistance);
+        _speed = _distance - _previousDistance;
+        _previousDistance = _distance;
     }
 
     private float InitDistanceIfNan(float distance) {
@@ -41,15 +38,29 @@ public class MovableController : MonoBehaviour {
     }
 
     private void ResolveFreeFallState() {
-        if (_distance - _minDistance > minDistanceLift) {
-            _isGrounded = false;
-            if (_wasGrounded) Debug.Log("Object is lifted");
+        if (-1 * _speed > minFreeFallSpeed) {
+            _state = State.Falling;
+        } else if (_speed > minLiftingSpeed) {
+            _state = State.Lifting;
+        } else {
+            _state = State.Grounded;
         }
-        if (Mathf.Abs(_previousDistance - _distance) < minDistanceChange) {
-            _isGrounded = true;
-            if (!_wasGrounded) Debug.Log("Object is grounded");
+        if (!_state.Equals(_previousState)) {
+            Debug.Log("State: " + _state);
         }
-        _wasGrounded = _isGrounded;
-        _previousDistance = _distance;
+    }
+
+    private void CalculateKinematicEnergy() {
+        if (!_state.Equals(_previousState) && State.Falling.Equals(_previousState)) {
+            var energy = rb.mass * _speed * _speed;
+            energy *= 0.5f;
+            Debug.Log("Hit with energy: " + energy);
+        }
+    }
+
+    private enum State {
+        Lifting,
+        Falling,
+        Grounded
     }
 }
