@@ -4,10 +4,12 @@ public class MovableController : MonoBehaviour {
     public Rigidbody rb;
     public float minFreeFallSpeed = 0.05f;
     public float minLiftingSpeed = 0.005f;
+    public float gravity = 10.0f;
 
     private float _distance = float.NaN;
     private float _previousDistance = float.NaN;
     private float _speed = float.NaN;
+    private float _maxFallingSpeed = 0.0f;
 
     private State _state;
     private State _previousState;
@@ -20,10 +22,16 @@ public class MovableController : MonoBehaviour {
     }
 
     private void HandleFreeFall() {
+        ApplyAdditionalGravityForce();
         CalculateSpeed();
         ResolveFreeFallState();
+        CalculateMaxFallingSpeed();
         CalculateKinematicEnergy();
         _previousState = _state;
+    }
+
+    private void ApplyAdditionalGravityForce() {
+        rb.AddForce(-Vector3.up * gravity);
     }
 
     private void CalculateSpeed() {
@@ -50,10 +58,17 @@ public class MovableController : MonoBehaviour {
         }
     }
 
+    private void CalculateMaxFallingSpeed() {
+        if (State.Falling.Equals(_state)) {
+            _maxFallingSpeed = Mathf.Min(_speed, _maxFallingSpeed);
+        } else if (!State.Falling.Equals(_previousState)) {
+            _maxFallingSpeed = 0.0f;
+        }
+    }
+
     private void CalculateKinematicEnergy() {
         if (!_state.Equals(_previousState) && State.Falling.Equals(_previousState)) {
-            var energy = rb.mass * _speed * _speed;
-            energy *= 0.5f;
+            var energy = rb.mass * _maxFallingSpeed * _maxFallingSpeed * 0.5f;
             Debug.Log("Hit with energy: " + energy);
             AddPoints(energy);
         }
