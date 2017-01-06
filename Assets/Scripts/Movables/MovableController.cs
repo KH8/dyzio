@@ -1,18 +1,27 @@
 using UnityEngine;
 
 public class MovableController : MonoBehaviour {
-    public Rigidbody rb;
-    public float minFreeFallSpeed = 0.05f;
+    public float minFreeFallSpeed = 0.04f;
     public float minLiftingSpeed = 0.005f;
     public float gravity = 10.0f;
+
+    private Rigidbody _rb;
+    private PointCounter _pc;
 
     private float _distance = float.NaN;
     private float _previousDistance = float.NaN;
     private float _speed = float.NaN;
-    private float _maxFallingSpeed = 0.0f;
 
     private State _state;
     private State _previousState;
+
+    /// <summary>
+    /// Awake is called when the script instance is being loaded.
+    /// </summary>
+    void Awake() {    
+        _rb = GetComponent<Rigidbody>();
+        _pc = GameObject.Find("Game").GetComponent<PointCounter>();
+    }
 
     /// <summary>
     /// This function is called every fixed framerate frame, if the MonoBehaviour is enabled.
@@ -25,13 +34,12 @@ public class MovableController : MonoBehaviour {
         ApplyAdditionalGravityForce();
         CalculateSpeed();
         ResolveFreeFallState();
-        CalculateMaxFallingSpeed();
         CalculateKinematicEnergy();
         _previousState = _state;
     }
 
     private void ApplyAdditionalGravityForce() {
-        rb.AddForce(-Vector3.up * gravity);
+        _rb.AddForce(-Vector3.up * gravity);
     }
 
     private void CalculateSpeed() {
@@ -58,25 +66,17 @@ public class MovableController : MonoBehaviour {
         }
     }
 
-    private void CalculateMaxFallingSpeed() {
-        if (State.Falling.Equals(_state)) {
-            _maxFallingSpeed = Mathf.Min(_speed, _maxFallingSpeed);
-        } else if (!State.Falling.Equals(_previousState)) {
-            _maxFallingSpeed = 0.0f;
-        }
-    }
-
     private void CalculateKinematicEnergy() {
         if (!_state.Equals(_previousState) && State.Falling.Equals(_previousState)) {
-            var energy = rb.mass * _maxFallingSpeed * _maxFallingSpeed * 0.5f;
+            var magnitude = transform.position.magnitude;
+            var energy = _rb.mass * magnitude * magnitude * 0.5f;
             Debug.Log("Hit with energy: " + energy);
             AddPoints(energy);
         }
     }
 
     private void AddPoints(float energy) {
-            var pc = GameObject.Find("Game").GetComponent<PointCounter>();
-            pc.Add(energy);
+            _pc.Add(energy);
     }
 
     private enum State {

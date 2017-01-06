@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class PointCounter : MonoBehaviour {
   public Text display;
-  public float pointFactor = 10000.0f;
+  public float pointFactor = 10.0f;
 
   private float _points = 0.0f;
 
