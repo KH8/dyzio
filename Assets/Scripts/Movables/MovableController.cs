@@ -5,6 +5,8 @@ public class MovableController : MonoBehaviour {
     public float minLiftingSpeed = 0.005f;
     public float gravity = 10.0f;
 
+    public AudioClip hitSound;
+
     private Rigidbody _rb;
     private PointCounter _pc;
 
@@ -15,12 +17,15 @@ public class MovableController : MonoBehaviour {
     private State _state;
     private State _previousState;
 
+    private AudioSource _audio;
+
     /// <summary>
     /// Awake is called when the script instance is being loaded.
     /// </summary>
     void Awake() {    
         _rb = GetComponent<Rigidbody>();
         _pc = GameObject.Find("Game").GetComponent<PointCounter>();
+        _audio = GetComponent<AudioSource>();
     }
 
     /// <summary>
@@ -68,7 +73,14 @@ public class MovableController : MonoBehaviour {
             var magnitude = transform.position.magnitude;
             var energy = _rb.mass * magnitude * magnitude * 0.5f;
             Debug.Log(gameObject.name + " - Hit with energy: " + energy);
+            PlayHitSound();
             AddPoints(energy);
+        }
+    }
+
+    private void PlayHitSound() {
+        if (hitSound != null && _audio != null) {
+            _audio.PlayOneShot(hitSound);
         }
     }
 

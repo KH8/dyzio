@@ -4,8 +4,12 @@ public class PlayerEvents : MonoBehaviour {
     public AnimationClip ithcingAnimation;
     public AnimationClip meowingAnimation;
     public AnimationClip idleSitAnimation;
+    public AudioClip meowingSound;
 
     private Animation _animation;
+    private AudioSource _audio;
+
+    public bool _isMeowing;
 
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
@@ -19,13 +23,15 @@ public class PlayerEvents : MonoBehaviour {
         _animation[meowingAnimation.name].wrapMode = WrapMode.Once;
         _animation[idleSitAnimation.name].layer  = 1;
         _animation[idleSitAnimation.name].wrapMode = WrapMode.Once;
+        _audio = GetComponent<AudioSource>();
     }
     
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// </summary>
     void Update() {
-        AnimateEvent();   
+        AnimateEvent(); 
+        PlaySounds();  
     }
 
     private void AnimateEvent() {      
@@ -37,6 +43,17 @@ public class PlayerEvents : MonoBehaviour {
         }
         if (Input.GetKey(KeyCode.Z)) {
             _animation.Play(idleSitAnimation.name);
+        }
+    }
+
+    private void PlaySounds() {
+        if (Input.GetKey(KeyCode.M)) {
+            if (!_isMeowing) {
+                _audio.PlayOneShot(meowingSound);
+            }
+            _isMeowing = true;
+        } else {
+            _isMeowing = false;
         }
     }
 }
