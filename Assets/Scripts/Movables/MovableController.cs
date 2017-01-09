@@ -61,16 +61,13 @@ public class MovableController : MonoBehaviour {
         } else {
             _state = State.Grounded;
         }
-        if (!_state.Equals(_previousState)) {
-            Debug.Log("State: " + _state);
-        }
     }
 
     private void CalculateKinematicEnergy() {
         if (!_state.Equals(_previousState) && State.Falling.Equals(_previousState)) {
             var magnitude = transform.position.magnitude;
             var energy = _rb.mass * magnitude * magnitude * 0.5f;
-            Debug.Log("Hit with energy: " + energy);
+            Debug.Log(gameObject.name + " - Hit with energy: " + energy);
             AddPoints(energy);
         }
     }
