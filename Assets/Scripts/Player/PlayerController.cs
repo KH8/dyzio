@@ -3,6 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour {
     public Rigidbody rb;
+    public GameController gc;
     public CharacterController controller;
 
     public float gravity = 10.0f;
@@ -28,6 +29,7 @@ public class PlayerController : MonoBehaviour {
     /// </summary>
     void Awake() {
         rb = GetComponent<Rigidbody>();
+        gc = GameObject.Find("Game").GetComponent<GameController>();
         controller = GetComponent<CharacterController>();
     }
 
@@ -43,7 +45,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void HandleControlls() {
-        if (controller.isGrounded) {
+        if (GameMode.Running.Equals(gc.GetMode()) && controller.isGrounded) {
             HandleJump();
             HandleRunModes();
             HandleVerticalMovement();
