@@ -7,6 +7,8 @@ public class MenuController : MonoBehaviour {
 
     public Text play;
     public Text exit;
+
+    private GameController _gc;
     
     private Color _ginger;
     private int _index = 0;
@@ -17,7 +19,8 @@ public class MenuController : MonoBehaviour {
     /// Awake is called when the script instance is being loaded.
     /// </summary>
     void Awake() {
-        ColorUtility.TryParseHtmlString ("#FF9638FF", out _ginger);
+        _gc = GameObject.Find("Game").GetComponent<GameController>();
+        ColorUtility.TryParseHtmlString("#FF9638FF", out _ginger);
     }
 
     /// <summary>
@@ -79,10 +82,10 @@ public class MenuController : MonoBehaviour {
         if (Input.GetKey(KeyCode.Return)) {
             switch(_operation) {
             case MenuOperation.Play:
+                _gc.StartGame();
                 break;
             case MenuOperation.Exit:
-                Debug.Log("Quitting game");
-                Application.Quit();
+                _gc.Exit();
                 break;
             }
         }
