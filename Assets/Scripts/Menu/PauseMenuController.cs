@@ -16,8 +16,8 @@ public class PauseMenuController : MenuController {
         return new [] {MenuOperation.Continue, MenuOperation.MainMenu};
     }
 
-    protected override void DisplayOperationSelection() {
-        switch(_operation) {
+    protected override void DisplayOperation(MenuOperation operation) {
+        switch(operation) {
             case MenuOperation.Continue:
                 ActivateText(continueDisplay, CONTINUE);
                 DeactivateText(mainMenuDisplay, MAIN_MENU);
@@ -29,14 +29,14 @@ public class PauseMenuController : MenuController {
         }
     }
 
-    protected override void HandleOperation() {
+    protected override void HandleOperation(MenuOperation operation) {
         if (Input.GetKey(KeyCode.Return)) {
-            switch(_operation) {
+            switch(operation) {
             case MenuOperation.Continue:
-                _gc.StartGame();
+                GetGameController().StartGame();
                 break;
             case MenuOperation.MainMenu:
-                _gc.Reset();
+                GetGameController().Reset();
                 break;
             }
         }

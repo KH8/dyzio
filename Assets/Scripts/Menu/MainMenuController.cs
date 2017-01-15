@@ -16,8 +16,8 @@ public class MainMenuController : MenuController {
         return new [] {MenuOperation.Play, MenuOperation.Exit};
     }
 
-    protected override void DisplayOperationSelection() {
-        switch(_operation) {
+    protected override void DisplayOperation(MenuOperation operation) {
+        switch(operation) {
             case MenuOperation.Play:
                 ActivateText(playDisplay, PLAY);
                 DeactivateText(exitDisplay, EXIT);
@@ -29,14 +29,14 @@ public class MainMenuController : MenuController {
         }
     }
 
-    protected override void HandleOperation() {
+    protected override void HandleOperation(MenuOperation operation) {
         if (Input.GetKey(KeyCode.Return)) {
-            switch(_operation) {
+            switch(operation) {
             case MenuOperation.Play:
-                _gc.StartGame();
+                GetGameController().StartGame();
                 break;
             case MenuOperation.Exit:
-                _gc.Exit();
+                GetGameController().Exit();
                 break;
             }
         }

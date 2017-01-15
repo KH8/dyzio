@@ -6,6 +6,7 @@ public class PlayerEvents : MonoBehaviour {
     public AnimationClip idleSitAnimation;
     public AudioClip meowingSound;
 
+    private GameController _gc;
     private Animation _animation;
     private AudioSource _audio;
 
@@ -16,6 +17,7 @@ public class PlayerEvents : MonoBehaviour {
     /// any of the Update methods is called the first time.
     /// </summary>
     void Start() {
+        _gc = GameObject.Find("Game").GetComponent<GameController>();
         _animation = GetComponent<Animation>();
         _animation[ithcingAnimation.name].layer  = 1;
         _animation[ithcingAnimation.name].wrapMode = WrapMode.Once;
@@ -30,8 +32,10 @@ public class PlayerEvents : MonoBehaviour {
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// </summary>
     void Update() {
-        AnimateEvent(); 
-        PlaySounds();  
+        if (GameMode.Running.Equals(_gc.GetMode())) {
+            AnimateEvent(); 
+            PlaySounds();
+        }
     }
 
     private void AnimateEvent() {      

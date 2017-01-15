@@ -2,11 +2,14 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public abstract class MenuController : MonoBehaviour {
-    protected GameController _gc;
+    public AudioClip tickSound;
+
+    private GameController _gc;
+    private AudioSource _audio;
     
     private Color _ginger;
     private int _index = 0;
-    protected MenuOperation _operation;
+    private MenuOperation _operation;
     private MenuOperation[] _operations;
 
     protected abstract MenuOperation InitOperation();
@@ -19,6 +22,7 @@ public abstract class MenuController : MonoBehaviour {
     void Awake() {
         ColorUtility.TryParseHtmlString("#FF9638FF", out _ginger);
         _gc = GameObject.Find("Game").GetComponent<GameController>();
+        _audio = GetComponent<AudioSource>();
         _operation = InitOperation();
         _operations = InitOperations();
     }
@@ -28,11 +32,11 @@ public abstract class MenuController : MonoBehaviour {
     /// </summary>
     void Update() {
         ChangeOperation();
-        DisplayOperationSelection();
-        HandleOperation();
+        DisplayOperation(_operation);
+        HandleOperation(_operation);
     }
 
-    void ChangeOperation() {
+    private void ChangeOperation() {
         var v = Input.GetAxisRaw("Vertical");
         if (v < 0) {
             SetNextOperation();
@@ -41,23 +45,29 @@ public abstract class MenuController : MonoBehaviour {
         }
     }
 
-    void SetNextOperation() {
+   private void SetNextOperation() {
         if (_index < _operations.Length - 1) {
             _index++;
             _operation = _operations[_index];
+            PlayTick();
         }
     }
 
-    void SetPreviousOperation() {
+    private void SetPreviousOperation() {
         if (_index > 0) {
             _index--;
             _operation = _operations[_index];
+            PlayTick();
         }
     }
 
-    protected abstract void DisplayOperationSelection();
+    private void PlayTick() {
+        _audio.PlayOneShot(tickSound);
+    }
 
-    protected abstract void HandleOperation();
+    protected abstract void DisplayOperation(MenuOperation operation);
+
+    protected abstract void HandleOperation(MenuOperation operation);
 
     protected void ActivateText(Text text, string content) {
         text.color = Color.white;
@@ -67,6 +77,10 @@ public abstract class MenuController : MonoBehaviour {
     protected void DeactivateText(Text text, string content) {
         text.color = _ginger;
         text.text = content;
+    }
+
+    protected GameController GetGameController() {
+        return _gc;
     }
 
     protected enum MenuOperation {
