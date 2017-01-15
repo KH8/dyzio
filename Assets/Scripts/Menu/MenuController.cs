@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public abstract class MenuController : MonoBehaviour {
+    public GameMode mode;
     public AudioClip tickSound;
 
     private GameController _gc;
@@ -31,9 +32,11 @@ public abstract class MenuController : MonoBehaviour {
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// </summary>
     void Update() {
-        ChangeOperation();
+        if (_gc.GetMode().Equals(mode)) {
+            ChangeOperation();
+            HandleOperation(_operation);
+        }
         DisplayOperation(_operation);
-        HandleOperation(_operation);
     }
 
     private void ChangeOperation() {
