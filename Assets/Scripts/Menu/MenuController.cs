@@ -1,26 +1,26 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MenuController : MonoBehaviour {
-    private static string PLAY = "Play";
-    private static string EXIT = "Exit";
-
-    public Text play;
-    public Text exit;
-
-    private GameController _gc;
+public abstract class MenuController : MonoBehaviour {
+    protected GameController _gc;
     
     private Color _ginger;
     private int _index = 0;
-    private MenuOperation _operation = MenuOperation.Play;
-    private MenuOperation[] _operations = new [] {MenuOperation.Play, MenuOperation.Exit};
+    protected MenuOperation _operation;
+    private MenuOperation[] _operations;
+
+    protected abstract MenuOperation InitOperation();
+
+    protected abstract MenuOperation[] InitOperations();
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
     /// </summary>
     void Awake() {
-        _gc = GameObject.Find("Game").GetComponent<GameController>();
         ColorUtility.TryParseHtmlString("#FF9638FF", out _ginger);
+        _gc = GameObject.Find("Game").GetComponent<GameController>();
+        _operation = InitOperation();
+        _operations = InitOperations();
     }
 
     /// <summary>
@@ -55,43 +55,23 @@ public class MenuController : MonoBehaviour {
         }
     }
 
-    void DisplayOperationSelection() {
-        switch(_operation) {
-            case MenuOperation.Play:
-                ActivateText(play, PLAY);
-                DeactivateText(exit, EXIT);
-                break;
-            case MenuOperation.Exit:
-                ActivateText(exit, EXIT);
-                DeactivateText(play, PLAY);
-                break;
-        }
-    }
+    protected abstract void DisplayOperationSelection();
 
-    void ActivateText(Text text, string content) {
+    protected abstract void HandleOperation();
+
+    protected void ActivateText(Text text, string content) {
         text.color = Color.white;
         text.text = "- " + content + " -";
     }
 
-    void DeactivateText(Text text, string content) {
+    protected void DeactivateText(Text text, string content) {
         text.color = _ginger;
         text.text = content;
     }
 
-    void HandleOperation() {
-        if (Input.GetKey(KeyCode.Return)) {
-            switch(_operation) {
-            case MenuOperation.Play:
-                _gc.StartGame();
-                break;
-            case MenuOperation.Exit:
-                _gc.Exit();
-                break;
-            }
-        }
-    }
-
-    private enum MenuOperation {
+    protected enum MenuOperation {
+        Continue,
+        MainMenu,
         Play,
         Exit
     }

@@ -4,6 +4,8 @@ public class CameraController : MonoBehaviour {
 	public GameObject target;
 	public float smoothTime = 0.5F;
 
+    private GameController _gc;
+
 	private Vector3 _offset;
 	private Vector3 _desiredPosition;
 	private float _desiredAngle;
@@ -23,6 +25,7 @@ public class CameraController : MonoBehaviour {
 	/// any of the Update methods is called the first time.
 	/// </summary>
 	void Start() {
+        _gc = GameObject.Find("Game").GetComponent<GameController>();
 		_offset = target.transform.position - transform.position;
 	}
 
@@ -52,14 +55,16 @@ public class CameraController : MonoBehaviour {
 	}
 
 	private void CalculateOverheadAngle() {
-		_overheadAngle += Input.GetAxis("Mouse Y"); 
+		if (GameMode.Running.Equals(_gc.GetMode())) {
+			_overheadAngle += Input.GetAxis("Mouse Y"); 
+        }
 		_overheadAngle = Mathf.Max(_overheadAngle, _overheadAngleMin);
 		_overheadAngle = Mathf.Min(_overheadAngle, _overheadAngleMax);
 	}
 
 	private void ApplyTransformation() {
 		transform.position = Vector3.SmoothDamp(transform.position, _desiredPosition, ref _refVelocity, smoothTime);
-		transform.LookAt(target.transform);
+        transform.LookAt(target.transform);
 		transform.Rotate(-1 * _overheadAngle, 0, 0);
 	}
 

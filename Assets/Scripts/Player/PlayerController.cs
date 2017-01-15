@@ -2,15 +2,15 @@ using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour {
-    public Rigidbody rb;
-    public GameController gc;
-    public CharacterController controller;
-
     public float gravity = 10.0f;
 
     public float movementSpeed = 2.0f;
     public float rotaionSpeed = 2.0f;
     public float jumpSpeed = 2.0f;
+
+    private Rigidbody _rb;
+    private GameController _gc;
+    private CharacterController _controller;
 
     private Vector3 _movementDirection = new Vector3();
     private Vector3 _rotationDirection = new Vector3();
@@ -28,9 +28,9 @@ public class PlayerController : MonoBehaviour {
     /// Awake is called when the script instance is being loaded.
     /// </summary>
     void Awake() {
-        rb = GetComponent<Rigidbody>();
-        gc = GameObject.Find("Game").GetComponent<GameController>();
-        controller = GetComponent<CharacterController>();
+        _rb = GetComponent<Rigidbody>();
+        _gc = GameObject.Find("Game").GetComponent<GameController>();
+        _controller = GetComponent<CharacterController>();
     }
 
     /// <summary>
@@ -39,13 +39,17 @@ public class PlayerController : MonoBehaviour {
     void Update() {
         HandleControlls();
 
+        if (!GameMode.Running.Equals(_gc.GetMode())) {
+            ResetMovements();
+        }
+
         ApplyGravity();
         ApplyMovement();
         ApplyRotation();
     }
 
     private void HandleControlls() {
-        if (GameMode.Running.Equals(gc.GetMode()) && controller.isGrounded) {
+        if (_controller.isGrounded) {
             HandleJump();
             HandleRunModes();
             HandleVerticalMovement();
@@ -84,13 +88,19 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    private void ResetMovements() {
+        _movementDirection.y = 0;
+        _movementDirection.z = 0;
+        _rotationDirection.y = 0;
+    }
+
     private void ApplyGravity() {
-        _movementDirection.y -= gravity * rb.mass * Time.deltaTime;
+        _movementDirection.y -= gravity * _rb.mass * Time.deltaTime;
     }
 
     private void ApplyMovement() {
         var movement = transform.TransformDirection(_movementDirection);
-        controller.Move(movement * movementSpeed * _speedModificator * Time.deltaTime);
+        _controller.Move(movement * movementSpeed * _speedModificator * Time.deltaTime);
     }
 
     private void ApplyRotation() {
