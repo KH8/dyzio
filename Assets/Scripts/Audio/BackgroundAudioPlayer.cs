@@ -1,6 +1,8 @@
 using UnityEngine;
 
 public class BackgroundAudioPlayer : MonoBehaviour {
+    private static int FADE_RAMP = 50;
+
     public AudioClip mainBackgroundSound;
     public AudioClip[] backgroundSounds;
 
@@ -21,7 +23,6 @@ public class BackgroundAudioPlayer : MonoBehaviour {
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// </summary>
     void Update() {
-        Debug.Log(_gc.GetMode() + " : " + _previousMode);
         if (IsInMenu()) {
             PlayMainTheme();
         } else {
@@ -44,7 +45,7 @@ public class BackgroundAudioPlayer : MonoBehaviour {
 
     private void PlayMainTheme() {
         if (!WasInMenu()) {
-            _audio.Stop();
+            StopPlayback();
             _audio.clip = mainBackgroundSound;
             _audio.loop = true;
             _audio.Play();
@@ -53,7 +54,7 @@ public class BackgroundAudioPlayer : MonoBehaviour {
 
     private void KeepPlayingRandomSong() {
         if (WasInMenu()) {
-            _audio.Stop();
+            StopPlayback();
         }
         if (!_audio.isPlaying) {
             var randomIndex = Random.Range(0, backgroundSounds.Length);
@@ -61,5 +62,14 @@ public class BackgroundAudioPlayer : MonoBehaviour {
             _audio.loop = false;
             _audio.Play();
         }
+    }
+
+    private void StopPlayback() {
+        while (_audio.volume > 0.001f) {
+            _audio.volume -= Time.deltaTime / FADE_RAMP;
+            Debug.Log(_audio.volume);
+        }
+        _audio.Stop();
+        _audio.volume = 1.0f;
     }
 }
