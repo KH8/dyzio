@@ -17,7 +17,7 @@ public class TouchableController : MonoBehaviour {
     public void Touch() {
         if (!_touched && transform.position.magnitude > touchThreshold) {
             _touched = true;
-            _tc.Increment();
+            _tc.Add(1);
             Debug.Log(this.name + " - touched");
         }
     }
