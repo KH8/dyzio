@@ -15,4 +15,8 @@ public class SmoothCounter {
         }
         return _actPoint;
     }
+
+    public bool IsCounting() {
+        return _setPoint != _actPoint;
+    }
 }
