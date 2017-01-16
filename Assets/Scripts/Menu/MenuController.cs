@@ -34,7 +34,7 @@ public abstract class MenuController : MonoBehaviour {
     void Update() {
         if (_gc.GetMode().Equals(mode)) {
             ChangeOperation();
-            HandleOperation(_operation);
+            HableOperationSelection();
         }
         DisplayOperation(_operation);
     }
@@ -69,6 +69,13 @@ public abstract class MenuController : MonoBehaviour {
     }
 
     protected abstract void DisplayOperation(MenuOperation operation);
+
+    private void HableOperationSelection() {
+        if (Input.GetKey(KeyCode.Return)) {
+            PlayTick();
+            HandleOperation(_operation);
+        }
+    }
 
     protected abstract void HandleOperation(MenuOperation operation);
 

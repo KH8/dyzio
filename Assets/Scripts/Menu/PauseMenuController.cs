@@ -26,12 +26,11 @@ public class PauseMenuController : MenuController {
                 ActivateText(mainMenuDisplay, MAIN_MENU);
                 DeactivateText(continueDisplay, CONTINUE);
                 break;
-        }
+            }
     }
 
     protected override void HandleOperation(MenuOperation operation) {
-        if (Input.GetKey(KeyCode.Return)) {
-            switch(operation) {
+        switch(operation) {
             case MenuOperation.Continue:
                 GetGameController().StartGame();
                 break;
@@ -39,6 +38,5 @@ public class PauseMenuController : MenuController {
                 GetGameController().Reset();
                 break;
             }
-        }
     }
 }
