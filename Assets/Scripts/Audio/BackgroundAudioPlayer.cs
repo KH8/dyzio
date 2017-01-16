@@ -67,7 +67,6 @@ public class BackgroundAudioPlayer : MonoBehaviour {
     private void StopPlayback() {
         while (_audio.volume > 0.001f) {
             _audio.volume -= Time.deltaTime / FADE_RAMP;
-            Debug.Log(_audio.volume);
         }
         _audio.Stop();
         _audio.volume = 1.0f;
