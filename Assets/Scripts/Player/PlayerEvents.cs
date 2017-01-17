@@ -4,13 +4,13 @@ public class PlayerEvents : MonoBehaviour {
     public AnimationClip ithcingAnimation;
     public AnimationClip meowingAnimation;
     public AnimationClip idleSitAnimation;
-    public AudioClip meowingSound;
+    public AudioClip[] meowingSounds;
 
     private GameController _gc;
     private Animation _animation;
     private AudioSource _audio;
 
-    public bool _isMeowing;
+    private bool _isMeowing;
 
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
@@ -53,11 +53,18 @@ public class PlayerEvents : MonoBehaviour {
     private void PlaySounds() {
         if (Input.GetKey(KeyCode.M)) {
             if (!_isMeowing) {
-                _audio.PlayOneShot(meowingSound);
+                PlayMeowSound();
             }
             _isMeowing = true;
         } else {
             _isMeowing = false;
+        }
+    }
+
+    private void PlayMeowSound() {
+        if (meowingSounds != null && meowingSounds.Length > 0 && _audio != null) {
+            var randomIndex = Random.Range(0, meowingSounds.Length);
+            _audio.PlayOneShot(meowingSounds[randomIndex]);
         }
     }
 }

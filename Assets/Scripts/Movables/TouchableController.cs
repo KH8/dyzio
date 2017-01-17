@@ -2,6 +2,12 @@ using UnityEngine;
 
 public class TouchableController : MonoBehaviour {
     public float touchThreshold = 1.0f;
+    public float touchSoundThreshold = 2.0f;
+    public float touchSoundVolumeFactor = 9.0f;
+
+    public AudioClip[] touchSounds;
+
+    private AudioSource _audio;
 
     private TouchCounter _tc;
 
@@ -12,6 +18,7 @@ public class TouchableController : MonoBehaviour {
     /// </summary>
     void Awake() {
         _tc = GameObject.Find("Game").GetComponent<TouchCounter>();
+        _audio = GetComponent<AudioSource>();
     }
 
     public void Touch() {
@@ -19,6 +26,20 @@ public class TouchableController : MonoBehaviour {
             _touched = true;
             _tc.Add(1);
             Debug.Log(this.name + " - touched");
+        }
+    }
+
+    public void TouchWithSound() {
+        this.Touch();
+        if (transform.position.magnitude > touchSoundThreshold) {
+            PlayTouchSound();
+        }
+    }
+
+    private void PlayTouchSound() {
+        if (touchSounds != null && touchSounds.Length > 0 && _audio != null && !_audio.isPlaying) {
+            var randomIndex = Random.Range(0, touchSounds.Length);
+            _audio.PlayOneShot(touchSounds[randomIndex], transform.position.magnitude / touchSoundVolumeFactor);
         }
     }
 

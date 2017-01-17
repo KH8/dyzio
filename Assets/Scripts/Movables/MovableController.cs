@@ -5,7 +5,7 @@ public class MovableController : MonoBehaviour {
     public float minLiftingSpeed = 0.005f;
     public float gravity = 10.0f;
 
-    public AudioClip hitSound;
+    public AudioClip[] hitSounds;
 
     private Rigidbody _rb;
     private PointCounter _pc;
@@ -79,8 +79,9 @@ public class MovableController : MonoBehaviour {
     }
 
     private void PlayHitSound() {
-        if (hitSound != null && _audio != null) {
-            _audio.PlayOneShot(hitSound);
+        if (hitSounds != null && hitSounds.Length > 0 && _audio != null) {
+            var randomIndex = Random.Range(0, hitSounds.Length);
+            _audio.PlayOneShot(hitSounds[randomIndex]);
         }
     }
 

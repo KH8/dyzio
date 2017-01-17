@@ -9,6 +9,9 @@ public class PlayerAnimator : MonoBehaviour {
     public AnimationClip runAnimation;
     public AnimationClip jumpPoseAnimation;
 
+    public AudioClip walkSound;
+    public AudioClip runSound;
+
     public float walkMaxAnimationSpeed = 0.75f;
     public float trotMaxAnimationSpeed = 1.0f;
     public float runMaxAnimationSpeed = 1.0f;
@@ -16,6 +19,7 @@ public class PlayerAnimator : MonoBehaviour {
     public float brokenRunFixTime = 0.5f;
 
     private Animation _animation;
+    private AudioSource _audio;
     private CharacterState _state = CharacterState.Idle;
     private CharacterState _previousState = CharacterState.Idle;
     private float _brokenRunTimeStamp = -1000.0f;
@@ -27,6 +31,7 @@ public class PlayerAnimator : MonoBehaviour {
         controller = GetComponent<CharacterController>();
         pc = GetComponent<PlayerController>();
         _animation = GetComponent<Animation>();
+        _audio = GetComponent<AudioSource>();
     }
     
     /// <summary>
@@ -35,7 +40,8 @@ public class PlayerAnimator : MonoBehaviour {
     void Update() {
         ResolveCharacterState();
         ResolveAnimation();
-        
+        PlaySound();
+        _previousState = _state;
     }
 
     private void ResolveCharacterState() {
@@ -53,7 +59,6 @@ public class PlayerAnimator : MonoBehaviour {
             }
         }
         HandleBrokenRunState();
-        _previousState = _state;
     }
 
     private void HandleBrokenRunState() {
@@ -92,6 +97,27 @@ public class PlayerAnimator : MonoBehaviour {
                 _animation.CrossFade(idleAnimation.name);
                 break;
         }        
+    }
+
+    private void PlaySound() {
+        if (!_previousState.Equals(_state)) {
+            _audio.Stop();
+            ResolveSound();
+            _audio.loop = true;
+            _audio.Play();
+        }       
+    }
+
+    private void ResolveSound() {
+        _audio.clip = null;
+        switch(_state) {
+            case CharacterState.Walking:
+                _audio.clip = walkSound;
+                break;
+            case CharacterState.Running:
+                _audio.clip = runSound;
+                break;
+        } 
     }
 
     private enum CharacterState {

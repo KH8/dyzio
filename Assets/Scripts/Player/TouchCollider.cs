@@ -9,7 +9,7 @@ public class TouchCollider : MonoBehaviour {
     void OnControllerColliderHit(ControllerColliderHit hit) {
         TouchableController tc = hit.gameObject.GetComponent<TouchableController>();
         if (tc != null) {
-            tc.Touch();
+            tc.TouchWithSound();
         }
     }
 }
