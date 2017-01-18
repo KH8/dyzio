@@ -6,7 +6,7 @@ public class ShootingController : MonoBehaviour {
     public Transform bulletSpawnRight;
 
     public float initialSpeed = 24.0f;
-    public float lifeTime = 2.0f;
+    public float lifeTime = 0.5f;
 
 	private float _overheadAngle = 15.0f;
 	private float _overheadAngleMax = 45.0f;
