@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour {
     public Canvas menuCanvas;
     public Canvas pauseCanvas;
     public BackgroundAudioPlayer audioPlayer;
+    public LightController lightController;
 
     private GameMode _mode = GameMode.Menu;
 	private GameMode _pausedMode;
@@ -21,6 +22,7 @@ public class GameController : MonoBehaviour {
             SceneManager.LoadScene("Room");
             EnableGameObjects();
             audioPlayer.PlayMainTheme();
+            lightController.MainLightMode();
         }
     }
 
@@ -53,6 +55,7 @@ public class GameController : MonoBehaviour {
     public void DubStep() {
 		if (ChangeMode(GameMode.DubStep)) {
             audioPlayer.PlaySomeDubStep(); 
+            lightController.DiscoMode();
         }
     }
 
@@ -109,6 +112,7 @@ public class GameController : MonoBehaviour {
     void Awake() {
 		EnableGameObjects();
 		audioPlayer.PlayMainTheme();
+        lightController.MainLightMode();
     }
 
     /// <summary>
