@@ -1,12 +1,16 @@
 using UnityEngine;
 
 public class ShootingController : MonoBehaviour {
+    public AudioSource audioSource;
+
     public GameObject bulletPrefab;
     public Transform bulletSpawnLeft;
     public Transform bulletSpawnRight;
 
     public float initialSpeed = 24.0f;
     public float lifeTime = 0.5f;
+
+	public AudioClip[] laserSounds;
 
 	private float _overheadAngle = 15.0f;
 	private float _overheadAngleMax = 45.0f;
@@ -22,6 +26,7 @@ public class ShootingController : MonoBehaviour {
         CalculateBulletSpawnPosition();
         if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.F)) {
             Fire();
+            PlayLaserSound();
         }
     }
 
@@ -53,5 +58,12 @@ public class ShootingController : MonoBehaviour {
 
     private Quaternion GetSpawnAngles() {
         return Quaternion.Euler(-1 * _overheadAngle + 105.0f, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+    }
+
+    private void PlayLaserSound() {
+        if (laserSounds != null && laserSounds.Length > 0 && audioSource != null) {
+            var randomIndex = Random.Range(0, laserSounds.Length);
+            audioSource.PlayOneShot(laserSounds[randomIndex]);
+        }
     }
 }

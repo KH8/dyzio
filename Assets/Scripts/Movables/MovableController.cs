@@ -9,6 +9,7 @@ public class MovableController : MonoBehaviour {
 
     private Rigidbody _rb;
     private PointCounter _pc;
+    private AudioSource _audio;
 
     private float _distance = float.NaN;
     private float _previousDistance = float.NaN;
@@ -16,8 +17,6 @@ public class MovableController : MonoBehaviour {
 
     private State _state;
     private State _previousState;
-
-    private AudioSource _audio;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
