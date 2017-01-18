@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
-    private GameMode _mode = GameMode.Menu;
     public GameObject mainPlayer;
     public GameObject menuPlayer;
     public Camera mainCamera;
@@ -10,22 +9,36 @@ public class GameController : MonoBehaviour {
     public Canvas mainCanvas;
     public Canvas menuCanvas;
     public Canvas pauseCanvas;
+    public BackgroundAudioPlayer audioPlayer;
 
+    private GameMode _mode = GameMode.Menu;
+	private GameMode _pausedMode;
+
+    private CheatReader _cheatReader = new CheatReader("CATSLISTENTODUBSTEP");
 
     public void Reset() {
         if (ChangeMode(GameMode.Menu)) {
             SceneManager.LoadScene("Room");
             EnableGameObjects();
+            audioPlayer.PlayMainTheme();
         }
     }
 
     public void StartGame() {
         if (ChangeMode(GameMode.Running)) {
             EnableGameObjects();
+            audioPlayer.PlayRandomSong(); 
         }
     }
 
+	public void Resume() {
+		if (ChangeMode(_pausedMode)) {
+			EnableGameObjects();
+		}
+	}
+
     public void Pause() {
+		_pausedMode = _mode;
         if (ChangeMode(GameMode.Paused)) {
             EnableGameObjects();    
         }
@@ -34,6 +47,12 @@ public class GameController : MonoBehaviour {
     public void Exit() {
         if (ChangeMode(GameMode.Quitting)) {
             Application.Quit();
+        }
+    }
+
+    public void DubStep() {
+		if (ChangeMode(GameMode.DubStep)) {
+            audioPlayer.PlaySomeDubStep(); 
         }
     }
 
@@ -73,7 +92,7 @@ public class GameController : MonoBehaviour {
     }
 
     private bool IsRunning() {
-        return GameMode.Running.Equals(_mode);
+		return GameMode.Running.Equals(_mode) || GameMode.DubStep.Equals(_mode);
     }
 
     private bool IsRunningOrPaused() {
@@ -88,16 +107,36 @@ public class GameController : MonoBehaviour {
     /// Awake is called when the script instance is being loaded.
     /// </summary>
     void Awake() {
-        EnableGameObjects();
+		EnableGameObjects();
+		audioPlayer.PlayMainTheme();
     }
 
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// </summary>
-    void Update() {
+	void Update() {
         if (IsRunning() && Input.GetKey(KeyCode.Escape)) {
             Pause();
+		}
+		CheckCheats();
+    }
+
+    private void CheckCheats() {
+        if (IsRunning() && Input.anyKeyDown) {
+            _cheatReader.NextChar(ResolveKeyPressed());
+            if (_cheatReader.IsValid()) {
+                DubStep();
+            }
         }
+    }
+
+    private char ResolveKeyPressed() {
+        foreach(KeyCode kcode in KeyCode.GetValues(typeof(KeyCode))) {
+            if (Input.GetKeyDown(kcode)) {
+                return kcode.ToString()[0];
+            }
+        }
+        return '_';
     }
 
     public GameMode GetMode() {

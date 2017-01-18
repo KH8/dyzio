@@ -32,7 +32,7 @@ public class PauseMenuController : MenuController {
     protected override void HandleOperation(MenuOperation operation) {
         switch(operation) {
             case MenuOperation.Continue:
-                GetGameController().StartGame();
+                GetGameController().Resume();
                 break;
             case MenuOperation.MainMenu:
                 GetGameController().Reset();

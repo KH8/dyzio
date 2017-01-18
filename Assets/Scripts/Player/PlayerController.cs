@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour {
     void Update() {
         HandleControlls();
 
-        if (!GameMode.Running.Equals(_gc.GetMode())) {
+		if (!GameMode.Running.Equals(_gc.GetMode()) && !GameMode.DubStep.Equals(_gc.GetMode())) {
             ResetMovements();
         }
 

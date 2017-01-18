@@ -55,7 +55,7 @@ public class CameraController : MonoBehaviour {
 	}
 
 	private void CalculateOverheadAngle() {
-		if (GameMode.Running.Equals(_gc.GetMode())) {
+		if (GameMode.Running.Equals(_gc.GetMode()) || GameMode.DubStep.Equals(_gc.GetMode())) {
 			_overheadAngle += Input.GetAxis("Mouse Y"); 
         }
 		_overheadAngle = Mathf.Max(_overheadAngle, _overheadAngleMin);

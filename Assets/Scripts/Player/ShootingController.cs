@@ -12,6 +12,8 @@ public class ShootingController : MonoBehaviour {
 
 	public AudioClip[] laserSounds;
 
+    private GameController _gc;
+
 	private float _overheadAngle = 15.0f;
 	private float _overheadAngleMax = 45.0f;
 	private float _overheadAngleMin = -15.0f;
@@ -19,9 +21,19 @@ public class ShootingController : MonoBehaviour {
     private bool _spawnSideToggle = false;
 
     /// <summary>
+    /// Awake is called when the script instance is being loaded.
+    /// </summary>
+    void Awake() {
+        _gc = GameObject.Find("Game").GetComponent<GameController>();
+    }
+
+    /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// </summary>
     void Update() {
+		if (!GameMode.DubStep.Equals(_gc.GetMode())) {
+			return;
+		}
         CalculateOverheadAngle();
         CalculateBulletSpawnPosition();
         if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.F)) {

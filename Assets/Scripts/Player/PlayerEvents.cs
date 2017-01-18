@@ -32,7 +32,7 @@ public class PlayerEvents : MonoBehaviour {
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// </summary>
     void Update() {
-        if (GameMode.Running.Equals(_gc.GetMode())) {
+		if (GameMode.Running.Equals(_gc.GetMode()) || GameMode.DubStep.Equals(_gc.GetMode())) {
             AnimateEvent(); 
             PlaySounds();
         }
