@@ -19,7 +19,7 @@ public class ShootingController : MonoBehaviour {
             bulletSpawn.position,
             bulletSpawn.rotation);
 
-        bullet.GetComponent<Rigidbody>().velocity = bullet.transform.up * 16.0f;
-        Destroy(bullet, 10.0f);
+        bullet.GetComponent<Rigidbody>().velocity = bullet.transform.up * 24.0f;
+        Destroy(bullet, 3.0f);
     }
 }
