@@ -9,6 +9,7 @@ public class ShootingController : MonoBehaviour {
 
     public float initialSpeed = 24.0f;
     public float lifeTime = 0.5f;
+    public float spawnOffset = 0.15f;
 
 	public AudioClip[] laserSounds;
 
@@ -44,9 +45,10 @@ public class ShootingController : MonoBehaviour {
 
     void Fire() {
         var bulletSpawn = GetNextBulletSpawn();
+        var offset = bulletSpawn.transform.up * spawnOffset;
         var bullet = (GameObject) Instantiate(
             bulletPrefab,
-            bulletSpawn.position,
+            bulletSpawn.position + offset,
             bulletSpawn.rotation);
         bullet.GetComponent<Rigidbody>().velocity = bullet.transform.up * initialSpeed;
         Destroy(bullet, lifeTime);
