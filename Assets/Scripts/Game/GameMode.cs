@@ -3,5 +3,6 @@ public enum GameMode {
     Running,
     DubStep,
     Paused,
+    GameOver,
     Quitting
 }

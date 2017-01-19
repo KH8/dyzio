@@ -50,6 +50,10 @@ public abstract class Counter : MonoBehaviour {
         PlayScoreSound();
     }
 
+    public string GetValueText() {
+        return DisplayValueText(_counter.GetSetPoint());
+    }
+
     private void RunNewValueAnimation() {
         if (_animationRunning) {
             newValueDisplay.fontSize -= decrementSizeFactor;

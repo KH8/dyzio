@@ -7,6 +7,10 @@ public class SmoothCounter {
         _setPoint += value;
     }
 
+    public int GetSetPoint() {
+        return _setPoint;
+    }
+
     public int GetActual() {
         if (_setPoint - _actPoint > _incrementValue) {
             _actPoint += _incrementValue;

@@ -13,9 +13,15 @@ public abstract class MenuController : MonoBehaviour {
     private MenuOperation _operation;
     private MenuOperation[] _operations;
 
+    private Text _activeText;
+    private float _alpha = 1.0f;
+    private float _alphaDirection = -1f;
+
     protected abstract MenuOperation InitOperation();
 
     protected abstract MenuOperation[] InitOperations();
+
+    protected abstract Text InitActiveText();
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -26,6 +32,7 @@ public abstract class MenuController : MonoBehaviour {
         _audio = GetComponent<AudioSource>();
         _operation = InitOperation();
         _operations = InitOperations();
+        _activeText = InitActiveText();
     }
 
     /// <summary>
@@ -34,9 +41,10 @@ public abstract class MenuController : MonoBehaviour {
     void Update() {
         if (_gc.GetMode().Equals(mode)) {
             ChangeOperation();
-            HableOperationSelection();
+            HandleOperationSelection();
         }
         DisplayOperation(_operation);
+        AnimateActiveText();
     }
 
     private void ChangeOperation() {
@@ -70,7 +78,7 @@ public abstract class MenuController : MonoBehaviour {
 
     protected abstract void DisplayOperation(MenuOperation operation);
 
-    private void HableOperationSelection() {
+    private void HandleOperationSelection() {
         if (Input.GetKey(KeyCode.Return)) {
             PlayTick();
             HandleOperation(_operation);
@@ -82,11 +90,26 @@ public abstract class MenuController : MonoBehaviour {
     protected void ActivateText(Text text, string content) {
         text.color = Color.white;
         text.text = "- " + content + " -";
+        _activeText = text;
     }
 
     protected void DeactivateText(Text text, string content) {
         text.color = _ginger;
         text.text = content;
+    }
+
+    private void AnimateActiveText() {
+        BounceAlphaValue();
+        Color c = _activeText.color;
+        c.a = _alpha;
+        _activeText.color = c;
+    }
+
+    private void BounceAlphaValue() {
+        _alpha += _alphaDirection * 0.05f;
+        if (_alpha < 0.4 || _alpha > 1) {
+            _alphaDirection *= -1;
+        }
     }
 
     protected GameController GetGameController() {

@@ -6,11 +6,18 @@ public class GameController : MonoBehaviour {
     public GameObject menuPlayer;
     public Camera mainCamera;
     public Camera menuCamera;
+    public Camera gameOverCamera;
     public Canvas mainCanvas;
     public Canvas menuCanvas;
     public Canvas pauseCanvas;
+    public Canvas gameOverCanvas;
     public BackgroundAudioPlayer audioPlayer;
     public LightController lightController;
+    public GameOverMenuController gameOverMenuController;
+
+    private TimeCounter _timeCounter;
+    private PointCounter _pointCounter;
+    private TouchCounter _touchCounter;
 
     private GameMode _mode = GameMode.Menu;
 	private GameMode _pausedMode;
@@ -30,19 +37,30 @@ public class GameController : MonoBehaviour {
         if (ChangeMode(GameMode.Running)) {
             EnableGameObjects();
             audioPlayer.PlayRandomSong(); 
+            _timeCounter.Run();
         }
     }
 
 	public void Resume() {
 		if (ChangeMode(_pausedMode)) {
 			EnableGameObjects();
+            _timeCounter.Resume();
 		}
 	}
 
     public void Pause() {
 		_pausedMode = _mode;
         if (ChangeMode(GameMode.Paused)) {
-            EnableGameObjects();    
+            EnableGameObjects();
+            _timeCounter.Pause();  
+        }
+    }
+
+    public void GameOver() {
+        if (ChangeMode(GameMode.GameOver)) {
+            EnableGameObjects();
+            _timeCounter.Pause();
+            gameOverMenuController.SetScores(_pointCounter.GetValueText(), _touchCounter.GetValueText());
         }
     }
 
@@ -75,19 +93,21 @@ public class GameController : MonoBehaviour {
     }
 
     private void EnablePlayers() {
-        mainPlayer.SetActive(IsRunningOrPaused());
+        mainPlayer.SetActive(IsRunningOrPausedOrGameOver());
         menuPlayer.SetActive(IsInMenu());
     }
 
     private void EnableCameras() {
         mainCamera.enabled = IsRunningOrPaused();
         menuCamera.enabled = IsInMenu();
+        gameOverCamera.enabled = IsGameOver();
     }
 
     private void EnableCanvases() {
         mainCanvas.enabled = IsRunningOrPaused();
         menuCanvas.enabled = IsInMenu();
         pauseCanvas.enabled = IsPaused();
+        gameOverCanvas.enabled = IsGameOver();
     }
 
     private bool IsPaused() {
@@ -102,8 +122,16 @@ public class GameController : MonoBehaviour {
         return IsRunning() || IsPaused();
     }
 
+    private bool IsRunningOrPausedOrGameOver() {
+        return IsRunningOrPaused() || IsGameOver();
+    }
+
     private bool IsInMenu() {
         return GameMode.Menu.Equals(_mode);
+    }
+
+    private bool IsGameOver() {
+        return GameMode.GameOver.Equals(_mode);
     }
 
     /// <summary>
@@ -113,6 +141,9 @@ public class GameController : MonoBehaviour {
 		EnableGameObjects();
 		audioPlayer.PlayMainTheme();
         lightController.MainLightMode();
+        _timeCounter = GetComponent<TimeCounter>();
+        _pointCounter = GetComponent<PointCounter>();
+        _touchCounter = GetComponent<TouchCounter>();
     }
 
     /// <summary>

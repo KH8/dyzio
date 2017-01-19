@@ -16,6 +16,10 @@ public class MainMenuController : MenuController {
         return new [] {MenuOperation.Play, MenuOperation.Exit};
     }
 
+    protected override Text InitActiveText() {
+        return playDisplay;
+    }
+
     protected override void DisplayOperation(MenuOperation operation) {
         switch(operation) {
             case MenuOperation.Play:
