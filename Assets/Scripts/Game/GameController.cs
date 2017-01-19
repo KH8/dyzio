@@ -110,7 +110,6 @@ public class GameController : MonoBehaviour {
         menuCanvas.enabled = IsInMenu();
         pauseCanvas.enabled = IsPaused();
         gameOverCanvas.enabled = IsGameOver();
-        AnimateCommonCanvas();
     }
 
     private bool IsPaused() {
@@ -141,6 +140,7 @@ public class GameController : MonoBehaviour {
     /// Awake is called when the script instance is being loaded.
     /// </summary>
     void Awake() {
+        AnimateCommonCanvas();
 		EnableGameObjects();
 		audioPlayer.PlayMainTheme();
         lightController.MainLightMode();
@@ -178,8 +178,14 @@ public class GameController : MonoBehaviour {
     }
 
     private void AnimateCommonCanvas() {
-        curtain.enabled = true;
+        ResetCurtainAlpha();
         curtain.CrossFadeAlpha(0.0f, 2.0f, false);
+    }
+
+    private void ResetCurtainAlpha() {
+        Color c = curtain.color;
+        c.a = 1.0f;
+        curtain.color = c;
     }
 
     public GameMode GetMode() {
