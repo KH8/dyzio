@@ -24,15 +24,11 @@ public class GameController : MonoBehaviour {
     private GameMode _mode = GameMode.Menu;
 	private GameMode _pausedMode;
 
-    private CheatReader _cheatReader = new CheatReader("CATSLISTENTODUBSTEP");
+    private CheatReader _cheatReader1 = new CheatReader("CATSLISTENTODUBSTEP");
+    private CheatReader _cheatReader2 = new CheatReader("CATSDONTCOUNTTHETIME");
 
     public void Reset() {
-        if (ChangeMode(GameMode.Menu)) {
-            SceneManager.LoadScene("Room");
-            EnableGameObjects();
-            audioPlayer.PlayMainTheme();
-            lightController.MainLightMode();
-        }
+        SceneManager.LoadScene("Room");
     }
 
     public void StartGame() {
@@ -161,10 +157,22 @@ public class GameController : MonoBehaviour {
 
     private void CheckCheats() {
         if (IsRunning() && Input.anyKeyDown) {
-            _cheatReader.NextChar(ResolveKeyPressed());
-            if (_cheatReader.IsValid()) {
-                DubStep();
-            }
+            CheckCheat1();
+            CheckCheat2();
+        }
+    }
+
+    private void CheckCheat1() {
+        _cheatReader1.NextChar(ResolveKeyPressed());
+        if (_cheatReader1.IsValid()) {
+            DubStep();
+        }
+    }
+
+    private void CheckCheat2() {
+        _cheatReader2.NextChar(ResolveKeyPressed());
+        if (_cheatReader2.IsValid()) {
+            _timeCounter.Stop();
         }
     }
 

@@ -14,6 +14,7 @@ public class TimeCounter : MonoBehaviour {
     private float _timeLeft = 0.0f;
     private bool _running = false;
     private bool _countdown = false;
+    private bool _stopped = false;
 
     private float _alpha = 1.0f;
     private float _alphaDirection = -1f;
@@ -29,6 +30,7 @@ public class TimeCounter : MonoBehaviour {
     public void Run() {
         Debug.Log("Timer - Start!");
         _timeLeft = initialTime;
+        _stopped = false;
         _running = true;
         _countdown = false;
     }
@@ -38,8 +40,14 @@ public class TimeCounter : MonoBehaviour {
         _audio.Pause();
     }
 
+    public void Stop() {
+        _stopped = true;
+        _running = false;
+        _audio.Pause();
+    }
+
     public void Resume() {
-        _running = true;
+        _running = !_stopped;
         if (_countdown) {
             _audio.Play();
         }
