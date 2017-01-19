@@ -15,7 +15,7 @@ public class BackgroundAudioPlayer : MonoBehaviour {
         StopPlayback();
         _audio.clip = mainBackgroundSound;
         _audio.loop = true;
-        _audio.Play();
+        _audio.PlayDelayed(0.5f);
     }
 
     public void PlaySomeDubStep() {
