@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
@@ -7,6 +8,7 @@ public class GameController : MonoBehaviour {
     public Camera mainCamera;
     public Camera menuCamera;
     public Camera gameOverCamera;
+    public Image curtain;
     public Canvas mainCanvas;
     public Canvas menuCanvas;
     public Canvas pauseCanvas;
@@ -108,6 +110,7 @@ public class GameController : MonoBehaviour {
         menuCanvas.enabled = IsInMenu();
         pauseCanvas.enabled = IsPaused();
         gameOverCanvas.enabled = IsGameOver();
+        AnimateCommonCanvas();
     }
 
     private bool IsPaused() {
@@ -172,6 +175,11 @@ public class GameController : MonoBehaviour {
             }
         }
         return '_';
+    }
+
+    private void AnimateCommonCanvas() {
+        curtain.enabled = true;
+        curtain.CrossFadeAlpha(0.0f, 2.0f, false);
     }
 
     public GameMode GetMode() {
