@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class BulletCollider : MonoBehaviour {
     public GameObject bulletExposionPrefab;
+    public float expolsionForce = 10.0f;
+    public float expolsionRadius = 0.5f;
 
 	public AudioClip[] exposionSounds;
 
@@ -30,11 +32,19 @@ public class BulletCollider : MonoBehaviour {
     void ExpoldeOnCollision(Collision other) {
         if (other.gameObject.name != "Bullet(Clone)" && other.gameObject.name != "BulletExplosion(Clone)") {
             PlayExposionSound();
-            Explode();
+            AnimateExplosion();
+            AddExplosionForce();
         }
     }
 
-    void Explode() {
+    private void PlayExposionSound() {
+        if (exposionSounds != null && exposionSounds.Length > 0 && _audio != null) {
+            var randomIndex = Random.Range(0, exposionSounds.Length);
+            _audio.PlayOneShot(exposionSounds[randomIndex]);
+        }
+    }
+
+    private void AnimateExplosion() {
         var expolsion = (GameObject) Instantiate(
             bulletExposionPrefab,
             transform.position,
@@ -42,10 +52,15 @@ public class BulletCollider : MonoBehaviour {
         Destroy(expolsion, 0.1f);
     }
 
-    private void PlayExposionSound() {
-        if (exposionSounds != null && exposionSounds.Length > 0 && _audio != null) {
-            var randomIndex = Random.Range(0, exposionSounds.Length);
-            _audio.PlayOneShot(exposionSounds[randomIndex]);
+    private void AddExplosionForce() {
+        Vector3 explosionPos = transform.position;
+        Collider[] colliders = Physics.OverlapSphere(explosionPos, expolsionRadius);
+        foreach (Collider hit in colliders) {
+            Rigidbody rb = hit.GetComponent<Rigidbody>();
+            if (rb != null) {
+                Debug.Log("BOOM!");
+                rb.AddExplosionForce(expolsionForce, explosionPos, expolsionRadius, 3.0F);
+            }   
         }
     }
 }
